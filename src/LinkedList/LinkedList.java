@@ -1,7 +1,7 @@
 package LinkedList;
 
 /**
- * 使用虚拟头结点的技巧
+ * 使用虚拟头结点的技巧,可以不用对第一个头节点特殊处理
  * @param <E>
  */
 public class LinkedList<E> {
@@ -140,6 +140,34 @@ public class LinkedList<E> {
         return false;
     }
 
+    /**
+     * 删除节点
+     */
+    public E remove(int index){
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("Remove failed. Index is illegal.");
+
+        Node prev = dummyHead;
+        for (int i = 0 ; i < index ; i++)
+            prev = prev.next;       //找到要删除节点的前一个节点
+
+        //找到要删除节点
+        Node retNode = prev.next;
+        prev.next = retNode.next;
+        retNode.next = null;
+        size--;
+
+        return retNode.e;
+    }
+
+    //删除第一个节点
+    public E removeFirst(){
+        return remove(0);
+    }
+    //删除最后一个节点
+    public E removeLast(){
+        return remove(size - 1);        //size指向链表尾部为空的地方
+    }
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
@@ -166,6 +194,13 @@ public class LinkedList<E> {
         System.out.println(linkedList);
 
         linkedList.set(1,5555);
+        System.out.println(linkedList);
+
+        linkedList.removeFirst();
+        System.out.println(linkedList);
+        linkedList.removeLast();
+        System.out.println(linkedList);
+        linkedList.remove(2);
         System.out.println(linkedList);
     }
 }
