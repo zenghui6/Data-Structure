@@ -160,6 +160,33 @@ public class LinkedList<E> {
         return retNode.e;
     }
 
+    /**
+     * 删除链表中值
+     * @param e
+     */
+    public void removeElements(E e){
+        Node head = dummyHead.next;
+        if (head == null)
+            throw new IllegalArgumentException("RemoveElements failed. List is Empty");
+
+        while (head != null && head.e.equals(e) ){
+            Node delNode = head;
+            head = head.next;
+            delNode.next = null;
+        }
+
+        Node prev = head;
+        while (prev.next != null){
+            if (prev.next.e.equals(e)){
+                Node delNode = prev.next;
+                prev.next = delNode.next;
+                delNode = null;
+            }
+            else
+                prev = prev.next;
+        }
+    }
+
     //删除第一个节点
     public E removeFirst(){
         return remove(0);
@@ -201,6 +228,11 @@ public class LinkedList<E> {
         linkedList.removeLast();
         System.out.println(linkedList);
         linkedList.remove(2);
+        System.out.println(linkedList);
+
+        linkedList.addLast(666);
+        System.out.println(linkedList);
+        linkedList.removeElements(666);
         System.out.println(linkedList);
     }
 }
