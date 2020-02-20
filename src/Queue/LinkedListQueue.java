@@ -105,7 +105,8 @@ public class LinkedListQueue<E> implements Queue<E> {
     }
 
     public static void main(String[] args) {
-        LinkedListQueue<Integer> queue = new LinkedListQueue<Integer>();
+        //向上转型
+        Queue<Integer> queue =new LinkedListQueue<Integer>();
         for (int i = 0 ; i < 10 ; i ++){
             queue.enqueue(i);
             System.out.println(queue);

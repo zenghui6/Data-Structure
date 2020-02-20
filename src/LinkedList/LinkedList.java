@@ -187,6 +187,38 @@ public class LinkedList<E> {
         }
     }
 
+    /**
+     * 递归的方式删除所有元素
+     * @return
+     */
+    public void removeElementsByDG(E e){
+        if (dummyHead.next == null)
+            throw new IllegalArgumentException("RemoveElements Failed. List is Empty");
+
+        dummyHead.next = removeElementsByDG(dummyHead.next,e);
+    }
+
+    /**
+     * 递归方式删除元素
+     * 返回删除后的链表
+     * @param head
+     * @param e
+     * @return
+     */
+    private Node removeElementsByDG(Node head,E e){
+        if (head == null){      //到达最后节点返回
+            return null;
+        }
+
+        head.next = removeElementsByDG(head.next,e);
+
+        if (e.equals(head.e))
+            return head.next;
+        else
+            return head;
+    }
+
+
     //删除第一个节点
     public E removeFirst(){
         return remove(0);
@@ -232,7 +264,16 @@ public class LinkedList<E> {
 
         linkedList.addLast(666);
         System.out.println(linkedList);
-        linkedList.removeElements(666);
+
+        linkedList.removeElementsByDG(666);
+        System.out.println(linkedList);
+
+        linkedList.removeElementsByDG(5555);
+        System.out.println(linkedList);
+
+        linkedList.removeElementsByDG(1);
+        System.out.println(linkedList);
+        linkedList.removeElementsByDG(1);
         System.out.println(linkedList);
     }
 }
