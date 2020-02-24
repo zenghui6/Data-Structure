@@ -2,6 +2,9 @@ package Set;
 
 import BST.BST;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BSTSet<E extends Comparable<E>> implements Set<E> {
 
     private BST<E> bst;
@@ -33,5 +36,22 @@ public class BSTSet<E extends Comparable<E>> implements Set<E> {
     @Override
     public boolean isEmpty() {
         return bst.isEmpty();
+    }
+
+    public static void main(String[] args) {
+        List<Character> list = new ArrayList<>();
+        for (int i=0 ; i<1000 ; i++){
+            list.add('a');
+            list.add('b');
+            list.add('c');
+        }
+        System.out.println(list.size());
+
+        BSTSet<Character> set = new BSTSet<Character>();
+        for (Character c : list){
+            set.add(c);
+        }
+
+        System.out.println(set.getSize());
     }
 }
