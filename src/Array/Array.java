@@ -1,6 +1,7 @@
 package Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 自己的动态数组数组
@@ -25,6 +26,17 @@ public class Array<E> {
         this(10);
     }
 
+
+    /**
+     * 将传入的数组加入data中, 不能直接data = arr ;这样只是将data 指向了 arr.外部改变arr
+     * @param arr
+     */
+    public Array(E[] arr){
+        data = (E[]) new Object[arr.length];
+        for (int i = 0 ; i < arr.length ; i++){
+            data[i] = arr[i];
+        }
+    }
     /**
      * 获取数组内元素个数
      */
@@ -207,8 +219,23 @@ public class Array<E> {
         for (Integer i : list ) {
             remove(i);
         }
-
     }
+
+    /**
+     * 交换i 与 j的元素
+     * @param i
+     * @param j
+     */
+    public void swap(int i, int j){
+        if (i < 0 || i >= size || j < 0 || j >= size)
+            throw new IllegalArgumentException("Index is illegal");
+
+        E t = data[i];
+        data[i] = data[j];
+        data[j] = t;
+    }
+
+
     @Override
     public String toString() {
         StringBuffer str = new StringBuffer();
