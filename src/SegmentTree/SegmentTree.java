@@ -1,5 +1,9 @@
 package SegmentTree;
 
+/**
+ * 线段树
+ * @param <E>
+ */
 public class SegmentTree<E> {
 
     //一个静态数组,用来存储叶子数据
