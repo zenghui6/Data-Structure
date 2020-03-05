@@ -79,7 +79,15 @@ Node节点信息:
 如果区间有n 个元素,数组表示需要多少个节点?
 **需要4n的空间** (估计值)我们的线段树不考虑添加元素,即区间固定使用4n的静态空间即可
 
-     
+#### 前缀树 (字典树)
+节点信息:
+```java
+private class Node{
+        public boolean isWord;  //这个节点是否是单词尾
+        public TreeMap<Character,Node> next; //下一个节点map
+}
+```
+root 节点不存储字符     
 
 
 
