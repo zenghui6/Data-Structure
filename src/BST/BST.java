@@ -288,7 +288,7 @@ public class BST<E extends Comparable<E>> {
                 return rightNode;
             }
 
-            //待删除节点左子树为空
+            //待删除节点右子树为空
             else if (node.right == null){
                 Node leftNode = node.left;
                 node.left = null;
